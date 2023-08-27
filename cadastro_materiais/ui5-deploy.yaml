@@ -1,0 +1,25 @@
+# yaml-language-server: $schema=https://sap.github.io/ui5-tooling/schema/ui5.yaml.json
+
+specVersion: "2.6"
+metadata:
+  name: felipe.desafio5p.cadastromateriais
+type: application
+builder:
+  resources:
+    excludes:
+      - /test/**
+      - /localService/**
+  customTasks:
+    - name: deploy-to-abap
+      afterTask: generateCachebusterInfo
+      configuration:
+        target:
+          url: https://lnl-s4h.opustech.com.br:5200/
+          client: "200"
+        app:
+          name: ZBSP_CAD1_MAT
+          description: Cadastro de Materiais
+          package: ZDESAFIO5P1
+          transport: S4HK902862
+        exclude:
+          - /test/
